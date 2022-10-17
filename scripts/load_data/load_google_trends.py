@@ -1,17 +1,17 @@
 import argparse
-from pathlib import Path
-import sys
-from typing import Literal
-from time import sleep
 import datetime
-from dateutil.relativedelta import relativedelta
-from typing import Union
-from typing import List
-import pandas as pd
 import pickle
+import sys
+from pathlib import Path
+from time import sleep
+from typing import List, Literal, Union
+
+import pandas as pd
+from dateutil.relativedelta import relativedelta
 
 sys.path.append("../../src/ftrends")
 import data
+
 
 def load(
     kw_list:str,

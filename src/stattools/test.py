@@ -19,7 +19,7 @@ def DieboldMariano(
         target (Union[np.array, pd.Series]): actual value
         pred1 (Union[np.array, pd.Series]): predictive value (base)
         pred2 (Union[np.array, pd.Series]): predictive value (comparison)
-        h (int, optional): correlation lag (> 1). Defaults to 1.
+        h (int, optional): correlation lag (>= 1). Defaults to 1.
         criterion (str, optional): criterion. Defaults to "MSE".
 
     Returns:
@@ -39,7 +39,7 @@ def DieboldMariano(
         d = e1 - e2
     
     T = len(d)
-    auto_cov = acovf(d, nlag=h-1)
+    auto_cov = acovf(d, nlag=h-1) # auto-covariances
     V_d = (auto_cov[0] + 2 * auto_cov[1:].sum()) / T
     dm_stat = 1 / np.sqrt(V_d) * d.mean()
     harvey_adj=((T + 1 - 2*h + h*(h-1)/T)/T)**(0.5)

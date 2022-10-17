@@ -1,1 +1,7 @@
 .venv
+tmp
+*/tmp/*
+data/raw
+*/*/fred_key.txt
+__pycache__/
+*.py[cod]

@@ -1,8 +1,10 @@
-from scipy.stats import t
+from typing import Dict, Union
+
 import numpy as np
 import pandas as pd
-from typing import Dict, Union
+from scipy.stats import t
 from statsmodels.tsa.stattools import acovf
+
 
 def DieboldMariano(
     target:Union[np.array, pd.Series],

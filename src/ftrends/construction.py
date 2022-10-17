@@ -4,6 +4,7 @@ from typing import List
 import pandas as pd
 import statsmodels.api as sm
 
+
 def convert_index_type_to_datetime(df:pd.DataFrame):
     if type(df.index) != pd.DatetimeIndex:
         df.index = pd.to_datetime(df.index)

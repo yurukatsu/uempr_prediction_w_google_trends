@@ -1,6 +1,7 @@
 import numpy as np
 from full_fred.fred import Fred
 
+
 def get_data(path_key:str, factor:str):
     fred = Fred(path_key)
     df = fred.get_series_df(factor)

@@ -49,8 +49,8 @@ def DieboldMariano(
     p_value = 2*t.cdf(-abs(dm_stat), df=T-1)
     
     # result
-    result = "The 2nd prediction isn't said to be higher accuracy than the 1st one under 5% significance." \
-        if p_value > 0.05 else f"The 2nd prediction is higher accuracy than the 1st one under 5% significance."
+    result = r"The 2nd prediction is not said to be higher accuracy than the 1st one under 5% significance." \
+        if p_value > 0.05 else r"The 2nd prediction is higher accuracy than the 1st one under 5% significance."
     dm_result = {
         "DM-statistic": dm_stat,
         "p-value": p_value,

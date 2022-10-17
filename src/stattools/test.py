@@ -1,4 +1,4 @@
-from typing import Dict, Union
+from typing import Dict, Literal, Union
 
 import numpy as np
 import pandas as pd
@@ -11,7 +11,7 @@ def DieboldMariano(
     pred1:Union[np.array, pd.Series],
     pred2:Union[np.array, pd.Series],
     h:int=1,
-    criterion:str="MSE"
+    criterion:Literal["MSE", "MAE", "MAPE"]="MSE"
 ) -> Dict[str, Union[float, str]]:
     """Diebold-Mariano test
 

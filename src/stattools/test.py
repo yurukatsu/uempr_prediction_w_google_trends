@@ -20,10 +20,10 @@ def DieboldMariano(
         pred1 (Union[np.array, pd.Series]): predictive value (base)
         pred2 (Union[np.array, pd.Series]): predictive value (comparison)
         h (int, optional): correlation lag (>= 1). Defaults to 1.
-        criterion (str, optional): criterion. Defaults to "MSE".
+        criterion (Literal[&quot;MSE&quot;, &quot;MAE&quot;, &quot;MAPE&quot;], optional): _description_. Defaults to "MSE".
 
     Returns:
-        Dict[str, Union[float, str]]: _description_
+        Dict[str, Union[float, str]]: test result.
     """
     if criterion == "MSE":
         e1 = (target - pred1)**2

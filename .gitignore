@@ -5,3 +5,4 @@ data/raw
 */*/fred_key.txt
 __pycache__/
 *.py[cod]
+*.zip

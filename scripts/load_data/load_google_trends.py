@@ -19,6 +19,7 @@ def load(
     geo:str,
     freq:Literal["M", "W", "D"]="M",
     verbose:bool=True,
+    sleep_time:int=30
 ) -> Union[pd.DataFrame, List[pd.DataFrame]]:
     if freq == "M":
         df = data.load_monthly(kw_list, cat, geo)
@@ -42,7 +43,7 @@ def load(
             
             df = data.load_weekly(kw_list, cat=cat, geo=geo, start_date=start_date, end_date=end_date)
             dfs.append(df)
-            sleep(30)
+            sleep(sleep_time)
             
             i += 1
         return dfs
@@ -63,7 +64,7 @@ def load(
             
             df = data.load_daily(kw_list, cat=cat, geo=geo, start_date=start_date, end_date=end_date)
             dfs.append(df)
-            sleep(30)
+            sleep(sleep_time)
             
             start_date = end_date + relativedelta(days=-30)
         return dfs
@@ -76,14 +77,15 @@ if __name__ == "__main__":
     parser.add_argument('--cat', default=0, type=int, help='category number')
     parser.add_argument('--geo', default="US", type=str, help='country')
     parser.add_argument('--freq', default="M", type=str, help='frequency')
+    parser.add_argument('--time', default=30, type=int, help='sleep time')
     
     # args
     args = parser.parse_args()
-    kw_list, cat, geo, freq = vars(args).values()
+    kw_list, cat, geo, freq, sleep_time = vars(args).values()
     kw_list.sort() # sort keywords
     
     # load data-frame(s)
-    df = load(kw_list, cat, geo, freq=freq)
+    df = load(kw_list, cat, geo, freq=freq, sleep_time=sleep_time)
     
     # save
     if freq == "M":
